@@ -14,23 +14,30 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
+            //GetByBrandIdTest(carManager);
 
-            
-            //brandManager.Add(new Brand { Id = 1, BrandName = "Volkswagen" });
-            //brandManager.Add(new Brand { Id = 2, BrandName = "Renault" });
+            // GetAllTest(carManager, brandManager, colorManager);
 
-            //colorManager.Add(new Color { Id = 1, ColorName = "Kırmızı" });
-            //colorManager.Add(new Color { Id = 2, ColorName = "Mavi" });
-            //colorManager.Add(new Color { Id = 3, ColorName = "Yeşil" });
+            foreach (var carDetail in carManager.GetCarDetails())
+            {
+                Console.WriteLine("Car Name : " + carDetail.CarName + "\nBrand Name : " 
+                    + carDetail.BrandName + "\nColor Name : " + carDetail.ColorName 
+                    + "\nDaily Price : " + carDetail.DailyPrice + "\n\n\n");
+            }
 
-            //carManager.Add(new Car { Id = 1, BrandId = 1, ColorId = 1, ModelYear = 2013, DailyPrice = 200000, Descriptions = "Marka Volkswagen, rengi kırmızı" });
-            //carManager.Add(new Car { Id = 2, BrandId = 1, ColorId = 2, ModelYear = 2008, DailyPrice = 130000, Descriptions = "Marka Volksvagen, rengi mavi" });
-            //carManager.Add(new Car { Id = 3, BrandId = 1, ColorId = 2, ModelYear = 2015, DailyPrice = 150000, Descriptions = "Marka Volkswagen rengi mavi" });
-            //carManager.Add(new Car { Id = 4, BrandId = 2, ColorId = 3, ModelYear = 2020, DailyPrice = 212500, Descriptions = "Marka Renault rengi yeşil" });
-            //carManager.Add(new Car { Id = 5, BrandId = 2, ColorId = 3, ModelYear = 2018, DailyPrice = 141000, Descriptions = "Marka Renault rengi yeşil" });
-            //carManager.Add(new Car { Id = 6, BrandId = 2, ColorId = 1, ModelYear = 2017, DailyPrice = 180000, Descriptions = "Renk : Kırmızı Marka: Renault" });
+        }
 
+        private static void GetByBrandIdTest(CarManager carManager)
+        {
+            foreach (var car in carManager.GetByBrandId(2))
+            {
+                Console.WriteLine("Car Name : " + car.CarName + "\nDaily Price : " + car.DailyPrice + "\n Description : " + car.Descriptions);
+                Console.WriteLine("--------------");
+            }
+        }
 
+        private static void GetAllTest(CarManager carManager, BrandManager brandManager, ColorManager colorManager)
+        {
             foreach (var brands in brandManager.GetAll())
             {
                 Console.WriteLine("Brands -- " + "Name : " + brands.BrandName + "  ID : " + brands.Id);
@@ -47,9 +54,8 @@ namespace ConsoleUI
 
             foreach (var cars in carManager.GetAll())
             {
-                Console.WriteLine("Cars -- " + "Name : " + cars.Descriptions + " -- Model Year : " + cars.ModelYear + " --  ID : " + cars.Id);
+                Console.WriteLine("Cars -- " + "Name : " + cars.Descriptions + " -- Model Year : " + cars.ModelYear + " --  ID : " + cars.Id + " -- Name : " + cars.CarName);
             }
-
         }
     }
 }
