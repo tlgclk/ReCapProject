@@ -12,7 +12,11 @@ namespace ConsoleUI
         {
             //CarDetailsTest();
             //ColorTest();
-
+            //CustomerAddTest();
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Customer { Id = 1, UserId = 1, CompanyName = "Xiaomi" });
+            //UserManager userManager = new UserManager(new EfUserDal());
+            //userManager.Add(new User {Id = 1, FirstName="Tolga", LastName="Çelik", Email="tolga@yandex.com", Password="123123" });
 
         }
 
@@ -34,6 +38,9 @@ namespace ConsoleUI
                 Console.WriteLine("Car's Details :" + "\n" + car.BrandName + "\n" + car.ColorName + "\n" + car.DailyPrice + "\n" + car.CarName + "\n");
             }
         }
+
+
+      
     }
 }
 
