@@ -10,14 +10,17 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //CarDetailsTest();
+            // CarDetailsTest();
             //ColorTest();
             //CustomerAddTest();
-            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            customerManager.Add(new Customer { Id = 1, UserId = 1, CompanyName = "Xiaomi" });
-            //UserManager userManager = new UserManager(new EfUserDal());
-            //userManager.Add(new User {Id = 1, FirstName="Tolga", LastName="Çelik", Email="tolga@yandex.com", Password="123123" });
+            //BrandTest();
 
+            UserManager userManager = new UserManager(new EfUserDal());
+            User user2 = new User { Email = "amandacrs@gmail.com", FirstName = "Amanda", LastName = "Cruies", Password = "12345" };
+            userManager.Add(user2);
+            User user1 = new User { Email = "michaelq@gmail.com", FirstName = "Michael", LastName = "Bastor", Password = "12345" };
+            userManager.Add(user1);
+            
         }
 
         private static void ColorTest()
@@ -39,8 +42,14 @@ namespace ConsoleUI
             }
         }
 
-
-      
+        private static void BrandTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            foreach (var brand in brandManager.GetAll().Data)
+            {
+                Console.WriteLine(brand.BrandName + "\n");
+            }
+        }
     }
 }
 
