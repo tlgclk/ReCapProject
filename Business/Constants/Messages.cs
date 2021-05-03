@@ -14,6 +14,7 @@ namespace Business.Constants
         public static string CarsListByBrandId = "The cars have been listed by Brand Id.";
         public static string CarsListByColorId = "The cars have been listed by Color Id.";
         public static string CarsListByDailyPrice = "The cars have been listed by daily price";
+        public static string CarNameInvalid = "The car name must have at least 2 characters";
         public static string CarDetailsListed = "The car's details has been listed.";
 
 
