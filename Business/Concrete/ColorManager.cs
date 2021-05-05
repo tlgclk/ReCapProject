@@ -19,14 +19,14 @@ namespace Business.Concrete
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
-            return new SuccessDataResult<Color>(Messages.ColorAdded);
+            return new SuccessResult(Messages.ColorAdded);
 
         }
 
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
-            return new SuccessDataResult<Color>(Messages.ColorDeleted);
+            return new SuccessResult(Messages.ColorDeleted);
         }
 
         public IDataResult<List<Color>> GetAll()
